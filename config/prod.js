@@ -5,8 +5,8 @@ module.exports = {
     password:process.env.PASSWORD,
     dialect:"postgres",
     port:process.env.PORT,
-    googleID:"",
-    googlSecret:"",
-    domain:""
+    googleID:process.env.GOOGLEID,
+    googlSecret:process.env.GOOGLESECRET,
+    domain:process.env.DOMAIN
     
 }
