@@ -1,0 +1,98 @@
+<%- include('./includes/head.ejs') %>
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+
+    <%- include('./includes/navbar.ejs')%>
+    <div class=" container">
+        <div class="wellcom">
+                <h1>wellcome <strong> <%= user %></strong>  </h1>
+                <p>the best way to learn a language is to speak it,what language do you want to learn </p>
+        </div>
+        <div class="columns languages">
+            <div class="column is-one-third">
+            
+                <div>
+                <a href="/users/chat?lang=Arbic">
+                   <div class="overlay">
+                      <p>Arabic</p>
+                   </div>
+                   <img src="https://ak7.picdn.net/shutterstock/videos/1011909227/thumb/1.jpg" alt="arabic">
+                </a>
+                </div>
+                           
+            
+              
+            </div>
+            <div class="column is-one-third">
+                <div>
+                     <a href="/users/chat?lang=english">
+                        <div class="overlay">
+                                <p>Engish</p>
+                             </div>
+                        <img src="data:image/png;base64,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" alt="english">
+                     </a>
+                </div>
+              
+            </div>
+            <div class="column is-one-third" >
+                    <div>
+                       <a href="/users/chat?lang=spanish">
+                            <div class="overlay">
+                                    <p>spanish</p>
+                                 </div>
+                           
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAACUlBMVEXWAAr/3xnYFRv/5xrkWAzfQgn/////2BrYAArFAAj/4Rr/3gD/1BX70BDIUQzwwhLWAADMXAjdnA703BXNAAi7AADx0xXbuxT31AD/5QDVjA/Le3z//ej/9LLp26DYkAzf4OXluRDhqQz6yhPfAADwwQ/rzzXbsADUhQzPAAD/+c306pXAmQDIAAkAPLewAAD//vXRpACziQrhQqL3kQquAAgANLXCfQng6v8AKq/kxRLjtgsAAKzz1i7r3Hjf0nPj0GVHVYIABroHOZzj2JPbxGzhxk3duTDCsHPSsTLezX/y2mLfyFLaxWDpxQDbzZHu2o7FqlDIpC/Uw5z34UzGqVXMtjfWtEjLcwrGs2nCLQDAqa2zl0Trz0rCIzHSvYe4Lwe/Y3C4Uge2XwjTcwvFYgq/lJrDignEgovJo0ytNwrHuK7HRQjBACO6oA6NdxOBYyqodRl/bggvKiqZhACDkCM4jDGjnxpijSxgUwCMNBCKbAONFgmwPQSNTgSKXgacVASKPwdlPgl0TgekgwNlOgjChGTo4cTUvM7LbU20i6GlhYO/AIK5MIrKhKTcGJbCUZSrQEGnZWGfQk+qKWrWzs+9bpu1VIzUr8SZaHhBU5UgS6asAFbIYJzWqJosaJ2Ij0yZokrwcAjoUACplaHWoHKdEjx0HG6RGEpze3S4t7h2d5RRJn2VVXEALMKxBHGBf1hbKHiEGlpfdYpMbcRPduegl2iRjXPJ0/fM2v9jfdCcp9oaTsnkk0JqdqaXqPGbsKAAZQAng0AAP9SCmZR1pIl7QxkeAAANcUlEQVR4nO2di3cTVRrAJ4xN70zSZJLMTJqwSzpJyiSSB9OQTkmWAhZBqKQoqGEKJbQNgyVUYZHdBSu4VFuRUrpawbLuunV94KPqioLWXXys/9fememL3LN6Dkl2p+X+zsmjYW7T++O733fnzk1LEJgyVv2/fwATgp2gYCco2AkKdoKCnaBgJyjYCQp2goKdoGAnKNgJCnaCgp2gYCco2AkKdoKCnaBgJyjYCQp2goKdoGAnKNgJCnaCgp2gYCco2AkKdoKCnaBgJyjYCQp2goKdoGAnKNgJCnaCgp2gYCco2AkKdoKCnaBgJyjYCcoq4gFMOQSJKcNCWDBl1GMnCNgJCnaCgp2gYCcoNXVC1/B715BaOqEzy1NKDZ3Qmay3Zt+8ltTSibcZOymD5sXlOXhq54S2bRR/syyl1MQJTdtsNjoTy8a8PvhsudWfWjixbVrb3rV5y6atD3XwW7q2bdm31lb9N6khVXVC6wFi2/zw9h2StOORh8Wdu7bHxNiOQ3u0ly22ZRIv1XRi29T56K6uPbt3Z3ONNM3npK6YmKNpS0Z4smvbrl2dm/nlES9VdGLr3LZTEkVpjwiNwK9JaZvEa09oi7D7MVEUH9+7ZVmESvWc2PY8IfJw9Ox7LEdrw4gkxb2Sh9T18OIWH4wc4Ym9jctAStWc2NqfFPSg2PcUHC8knXPnpS4xHxA8JAlnKpttmqectG4ZDJ/qxckuCcYAjI5923Nk0EWxgBL2Ci7AsqUAz3vbfVrE0OL+TdV6v9pRLSc0/4REkqQQcSndMQ4AQBD+bJcgsvApoGLdJUde1KLnwEHzD56qOVm7WyKDCksQTM8hFzRCAEoKiQX9GffYYQY+UhFa2LHF/IOnak46H3b2EroBVipoYUIQgfpmltVeKagl/V8AJ+5ov4+crO1qdmsiQFysD7IU7H+w190X6IV6qH6LM6lL6Xfu31ed96sl1as7a2IOLXcQlOLsy0a4qGxxsn46yLFFZ69Ty7kQTtq2DIpx1ZzQmWZ7UemlgNuZ5CzB6BEuqKjpgONoT95SpCQnGy+4lIaQ1/xKquik0eIV7BYl6bYP9MVL0ac5grO4CPZpSon3DgjBgWhDvVO08PNOTOymYif0QidpPpn1U8eSlGIpcv5ss7shHwpms0GqZO9nuWPH81kluHg0b14pFTqhycEMOd9RWhAdSjOcv6alnORSBSngFqSimssW3JFAg0sJivMH0mTjM+RCO7NRkROSFwPPngh4PfN9tWScsuqURKHBbt/e4A66Qwfr7fZmURKkvmxuLjRo2us9dfK3p055M2TlHagBlTgh/Zy/6IgHiklhIQAyglPcbX/u9O9C20KlUinb5fSe/n1o+1PNQmYhLJ7xnrRIf3BmTg2eMqWUCpzQHnhOUzyhKhRwLPSNlN0N20MhpzNn4Mw5m5tD2w9me+ezKu096zqT5M4Szxf6T1b889eCSpxkhtLnnj/3wplzyvmFMkJnRFHNFx2KwnEURXGcojiK+YAoeBez6wvK+RfPnH/+3EBhxcWJhRz844XhE8NnL1xYsjzPO5MsAcpguSWXNWj+7Etnh4eHz700bEolFebYwRcHCgNnXuD1vs1vfeK9MVUuuiAOmFFKvX2yKmYabQbGutuFM0PpgRefMaeSipzQvCC1tLTERG1c0J40Z0Bx87z8III2tYeJOKa1E/jq9aOaVOQkA0uuhqB94aHKRwyz2rrAoyPGo+5EMJrZc+acoFQWJ5KgI9GGE313KZDzsvFs0UnT6CviwfVNFy8aTrxZvZmYq14/qklF+YTOhDQEy6ITGB4tgy36Opvh5NXupm7rpdRYKrD/8vio7gQGit7OrBdOK3PiFXX4BSfA1VtMe9OuIW2pTXPy6qdXrN0TfxpLpS6tT41NGk4skt7MrOfIlZ3v2NrXrVvX3qktnc05UYUcdJIT1Dknr6VSo1br66lU6or10qR1Lk46tXbrNq1MJ7/SksWvF50QycEB6GToFGWMnabJN1LjF7uvQCdvNF1qmnNiW9OkZZm194UT4IqFpFgoJoViJTCXY6+Mp7QwSb1hvV+dSFkpJsRgvlhwYh29MjY29vrVSeuV0fvSSa8kiTEpJkrS0JyTI6OXU6mxsdRVq/Xa5fvJyWItViUYJPCmztfiN8fHU1dh2RmDB47NzdnuByeNHniaM1d3pqZiYuz6lH+u7kwe/XPTpLXprVTqsvWa5kQ70tK1Yp3QZO4vqyeOR6NsSSlFRMNJx18lSUpcn3ditXbD21tvwdEzdgXWYjHiUOrYOrbwyuEjO0lzngTeuxOaDCp1zDTDTD9AbKgjAGU4eftvsWzs7bcD2gLB4cm5ub02dmCgQDhAPDBNTBOw4XQdFyDNGCoVOCmyYMN03TTzTh0x/Q4B4lqOBaoEk0lMkmSQpMJhJn4Uenht9OL437VJm+4EgGliA1NXV7fhAeKdkseEUu7ZCZ2FWXSaYV9ZffRdd6S/REEngC1oTmAtltQ0CL/3/gcMM2GdhNOT8YuX9DRr5eJKMeJ++ejqCaUuvGGa8Jtw+Ny7Ez4OWMcxPcf6tKUkUbtG7IVV+MZDtyRRBkxHAkKFV1vfvHLtmtX64bg2eNxaOvbpdWeyWPcOIaykOLGQLirtNuqOR0sL2voJNwjnJx9t/EgcpMIfa0o6Ophok5ZVml5LjWuPjVpLm1F3Hi8kOROGSSX5REiDqL440s2dt9D6mlLcn89HPvn4k0gfc3xm51RrQpj5IHxUT7PdVz+dNNaU6BPJI7qTnjClriwnFrIlyelOJsPpIG3MY7X1EybMAC78/hctB1oPDH/2cbjHWFayvmqss9F8mplzwp03o5LK1u15rz52JpOE7oTQVpKMGxf+PHFyqrXjbKIjTFmXoDlh5+Lkcd6UpbjCNSV9Hjs5wWhOeEnoTWs3ryCn0+HPWz+b+ijxbGsHwya5RbzwwDjT071S57HG3P5olAEUD7vqrHexznpH3F4fAOnw+4nWmeZEa+Lj8F1r19AJrQAmerhpZTqhSd/IUZZhGCUHMyffbDihGuwBMBTuSbR+NnygNfGP8ICsyHnlhFrokwnCC4/0OGCb6OHJteYcOhXlWN6vRGHvqHe1vt3lhFDZcEdi4zCcokRBnxrx+yNqXg7KcUK/FES+2wPbMVw+t8JyLOlnCcDA1DC3fnKXk2CeoRKJrYnEe+F0nAWRAmDjUAvQnWjrJ8cm4JAj2KIZpVTgBOaJ6MTkwprSXU7c9aVw9P2Oz4/DKUiJpVQVUP2yrFILTmCz1VFYo8y4XakCJw5QEpass5U5UZNEGJ4EpvNQCJeXFbUlLs+Nnfl1th0uglphcZJPe3z/3YkfqJESx0kU6+5TIoVibwS4lowdvRaThcLKckJ7lMjPOSGCFj8Abu1MMZgfChYI4OgvcxKMm3HoVFR3gq6fd1IfIVipUJB7Hc89l+yTk3mjFi86cefNGCYV7VPiM7ZfcAKUPinmUP2nTwfkYlAtyydrLea8YlzRnI3+JScEEaRYB+VvaSkqJdZRnk9Muhm0etd35uf2d8VJSe4DJbXYrwRkhVDVsjgxp5KKnaxfv/7nxo6rV6ZkmYoovUMqpcoUMJxsa4LtVqiTnLbl0ykYmwWyiJMAYCXOEcsTah8hx+JFmGONQiPo+0TNmU0q3pOjbzgSLcZGm3In9kNREBgKsoDrlwFBBYtFkNQLDS3q+5RW5v4TqVnD6BztLXcSWt/DyAEFAFbtAwC4ZBfQiy9UqbcTTTk7qXSPn74FK9RgfIiWd5Y5abd2Mw5J4QgQUQBL5VUlnjEiqsFouPL2+NE+3tlgt9c3hJw+n/Z1xrHUCeMe2fPgBBOX5BjlL3GS6meBrIWJz5cLhertdrsz5zOllArm9k9+cfPLmzduXb/55dRXtzzwFfLEUidc08NBwXqcUeQWqEWCJ4CgV19oufXV1i+1hrD11v1mlHLvTmzb2m7Pft3WBu/bbt/WP/pInsjOO7EHmtaHXg+usU4wDMu6SgQL2D59jkZ/fRseD9u1zd5uGzHjp0jv3Ynvq5lvZm/OzCS+mf32ZsKjv0ZmcgNcg90fDexZb7U2/DME53TdPdpiHHN8YNBYaqR/vNk6e+fbmZnrs9/M/MtXpX5UkwriZF3b7Tu3rda22Tvw/3zuI7K0Ze2hNSMjcJr63fc/7H1k5Kfvf9AudoyO7n104dNg8Og7d9qs1q/vzK64OLk188WNrRs3Jm7cmPrxIc/8y7SvsX2NPuX/7rt/f/fTh/DZr0baPYu/5MP30I+wyfXWjVM3bmz8aGXFiVZAIB7t7uBd03SbzdbId+7rbN+8Dt5vamy0LY0GetNBG2xCknrre3/32lH550b1O6R80LZ50BZmrDVLwb8DEwU7QcFOULATFOwEBTtBwU4Q6Hr8dxAQLEQdppz/3Z8rWTbgvzWDgp2gYCco2AkKdoKCnaBgJyjYCQp2goKdoGAnKNgJCnaCgp2gYCco2AkKdoKCnaBgJyjYCQp2goKdoGAnKNgJCnaCgp2gYCco2AkKdoKCnaBgJyjYCQp2goKdoGAnKNgJCnaCgp2gYCco2AkKdoKCnaBgJwhgFbEKU85/AOuU7JEcsxbzAAAAAElFTkSuQmCC" alt="english">
+                    </a>
+                        </div>
+            </div>
+        </div>
+            <div class="columns container languages">
+            <div class="column is-one-third">
+                    <div>
+                                <a href="/users/chat?lang=frensh">
+                            <div class="overlay">
+                                    <p>Frensh</p>
+                                 </div>
+                           
+                           </a>      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAFVBMVEX///8AI5XtKTkAFJJ6gbrzg4ntHTC7o1gDAAAA/klEQVR4nO3QSQ0AIAADsHH6l4yKPUhaCc2oWTs9586aOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHixIkTJ06cOHHy4ckD5KrN4eD2boIAAAAASUVORK5CYII=" alt="english">
+                    </div>
+            </div>
+            <div class="column is-one-third">
+                    <div>
+                                <a href="/users/chat?lang=Portiguse">
+                            <div class="overlay">
+                                    <p>Portiguse</p>
+                                 </div>
+                                 <img src="https://www.worldatlas.com/r/w728/img/flag/pt-flag.jpg" alt="english">
+                    </a>
+                                </div>
+
+
+            </div>
+            <div class="column is-one-third">
+                    <div>
+                                <a href="/users/chat?lang=Germany">
+                            <div class="overlay">
+                                    <p>Germany</p>
+                                 </div>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAACuCAMAAAClZfCTAAAAElBMVEUAAAD/zgDdAADnAADaAAD/2AAtsSEoAAAA+ElEQVR4nO3QMQGAMAAEsYeCf8tIuI0pkZANAAAAAAAAAAAAAAAAAAAAgB8dwm6CoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKewh7CbsIipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUqKkqKkKClKipKipCgpSoqSoqQoKUofMGTNC8HkSxoAAAAASUVORK5CYII=" alt="english">
+                    </a>
+                        </div>
+            </div>
+         
+        </div>
+         
+    </div>
+ 
+    
+  
+    <%-include('./includes/bulma.ejs')%>
+
+
+</body>
+</html>

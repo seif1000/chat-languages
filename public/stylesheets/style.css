@@ -1,0 +1,219 @@
+*{
+  box-sizing: border-box;
+
+}
+nav{
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 10px;
+}
+.showcase h1{
+  font-size: 22px;
+  padding-top: 150px;
+  padding-bottom: 20px;
+ 
+
+}
+.showcase img{
+  
+   width: 83%;
+ 
+
+}
+.signup_login_form{
+  width: 60%;
+  margin: 30px auto;
+  padding: 2em;
+  border: 1px lightgray solid;
+  box-shadow:      3px 3px 5px 6px #ccc;
+  border-radius: 5px;
+}
+.signup_login_form h2{
+  font-size: 20px;
+  text-align: center;
+  margin: 0.7em;
+}
+
+.signup_login_form form{
+  margin-top: 12px;
+}
+.languages{
+  margin-top: 20px;
+  margin-left: 100px
+  ;
+}
+.languages div > div{
+    width: 150px;
+    height: 150px;
+   
+    border-radius: 5px;
+    cursor: pointer;
+}
+.wellcom{
+  text-align: center;
+  margin-top: 20px;
+}
+.columns{
+  text-align: center;
+}
+.languages img{
+  display: block;
+  height: 100%;
+  border-radius: 5px;
+}
+.column > div{
+  position: relative;
+}
+.languages  .overlay{
+ 
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  transition: all 0.5s;
+
+  z-index: 1;
+}
+.languages  .overlay:hover{
+  opacity: 0.9;
+}
+.overlay p{
+  text-align: center;
+   padding-top: 30px;
+}
+
+.chat{
+  display: flex;
+  flex-direction:row;
+}
+.avatar{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0.4em;
+}
+
+#sidebar{
+ width: 260px;
+  background: dodgerblue;
+  color: white;
+  height: 90vh;
+  padding: 1em;
+}
+#sidebar h2{
+  font-size: 22px;
+  margin-bottom: 1em;
+}
+#sidebar .users li{
+  padding: 0.6em;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.users li p{
+  padding-top: 0.3em;
+  padding-right: 0.3em;
+}
+
+.users li span img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+#sidebar .users li:before{
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: green;
+}
+.chat__main{
+  
+  padding: 1em;
+  height: 90vh;
+  
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.chat__messages {
+  flex-grow: 1;
+  padding: 24px 24px 0 24px;
+  overflow-y: scroll;
+}
+.message .user{
+  display: flex;
+  flex-direction: row;
+
+}
+.message{
+  background: transparent;
+}
+ .message .user span{
+   margin-right: 0.4em;
+ }
+ .message__name{
+   font-weight: bold;
+ }
+ .message__content{
+   margin-top: 0.6em;
+   background: lightgrey;
+   padding: 0.5em;
+   border-radius: 5px;
+   position: relative;
+ }
+ .message__content:before{
+  content: " ";
+  position: absolute;
+  top: -10px;
+  left: 2%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent lightgray transparent;
+ }
+ .message .user img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+ 
+
+}
+
+.compose {
+  display: flex;
+  flex-shrink: 0;
+  margin-top: 16px;
+  padding: 24px;
+}
+
+.compose form {
+  display: flex;
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+.compose input {
+  border: 1px solid dodgerblue;
+  width: 100%;
+  padding: 12px;
+  margin: 0 16px 0 0;
+  flex-grow: 1;
+}
+
+.compose button{
+  border: none;
+  background: dodgerblue;
+  color: white;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 50%;
+}

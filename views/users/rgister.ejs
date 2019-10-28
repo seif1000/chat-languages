@@ -1,0 +1,48 @@
+<%- include('../includes/head.ejs') %>
+<title>Document</title>
+</head>
+<body>
+        <%- include('../includes/navbar.ejs') %>
+    <div class="signup_login_form">
+            <h2>sign up </h2>
+            <a class="button is-danger is-medium is-fullwidth" href="<%= googlUrl %>">google   <i class="fab fa-google"> </i></a>
+            <h2>or</h2>
+            <form action="/users/register" method="POST">
+                <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                          <input class="input is-danger" type="email" name="email"placeholder="Email input" value="hello@">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                          <span class="icon is-small is-right">
+                            <i class="fas fa-exclamation-triangle"></i>
+                          </span>
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
+                 </div>
+                 <div class="field">
+                        <label class="label">password</label>
+                        <p class="control has-icons-left">
+                          <input class="input" name="password" type="password" placeholder="Password">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                          </span>
+                        </p>
+                      </div>
+                      <div class="field">
+                        <p class="control">
+                          <button type="submit" class="button is-success">
+                            sign up
+                          </button>
+                        </p>
+                      </div>
+            </form>
+         
+        
+    </div>    
+
+    
+    <%-include('../includes/bulma.ejs')%>
+</body>
+</html>
