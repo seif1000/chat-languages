@@ -7,8 +7,7 @@ const pool = mysql.createPool({
     user:key.user,
     database:key.database,
     password:key.password,
-    
-    
+  
     
 })
 
