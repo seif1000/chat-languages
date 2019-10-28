@@ -5,6 +5,10 @@
   "scripts": {
     "start": "nodemon app"
   },
+  "engines": {
+    "node": "10.16.3",
+    "npm": "6.9.0"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie": "^0.4.0",
