@@ -12,10 +12,10 @@ const {mongo_uri} = require('./config/config') ;
 const http = require('http');
 
 
-require('./database/datanase') ;
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+require('./database/datanase') ;
 
 
 var app = express();

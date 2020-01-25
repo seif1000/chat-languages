@@ -31,14 +31,14 @@ router.post('/login', async (req, res, next)=>{
 
    try {
      // const getUser = await  mysql.query(userQuery,email);
-     const getUser = await User.find({email}) ;
-      const user = getUser;
-     if (!user) return res.redirect('/users/login');
+     const getUser = await User.findOne({email}) ;
+    
+     if (!getUser) return res.redirect('/users/login');
        
-      const doMatch = await  bcrypt.compare(password, user.password);
+      const doMatch = await  bcrypt.compare(password, getUser.password);
       if (doMatch){
         req.session.isLogined = true;
-        req.session.user = user
+        req.session.user = getUser
          return req.session.save(async (err)=>{
              if (err) throw err;  
               res.redirect('/home');
@@ -62,22 +62,19 @@ router.get('/register' ,isGoBack,(req,res,next)=>{
 router.post('/register',async (req, res,next)=>{
      const email = req.body.email;
      let password = req.body.password;
-
-  //   const sql = ' select * from users where email = ?;'
-
   try {
-    //const getUser =await mysql.query(sql,email);
-    const getUser = await  User.find({email}) ;
-    const user = getUser;
-    if(user) console.log("user allreday exist");
-  //  const inserSql = `
-   // insert into users (email,password) values(?,?);
-//`   
-   const hashPassword = await bcrypt.hash(password,12)
-  // await mysql.query(inserSql,[email,hashPassword])
-  const createdUser = new User({email,password:hashPassword} );
-  await User.save() ;
-   res.redirect('/users/login')
+  
+    const getUser = await  User.findOne({email}) ;
+    console.log(getUser) ;
+    if(getUser){
+      console.log("user allreday exist");
+    } else{
+      const hashPassword = await bcrypt.hash(password,12)
+      const createdUser = new User({email,password:hashPassword} );
+      await createdUser.save() ;
+      res.redirect('/users/login')
+    }
+ 
 
   } catch (error) {
     console.log(error)

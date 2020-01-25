@@ -35,23 +35,18 @@ router.get('/oauthCallback', async (req, res, next)=>{
       oauth2Client.setCredentials(tokens);
       session['tokens'] = tokens;
       const response =await plus.people.get({ userId: 'me', auth: oauth2Client});
+  
+     const resUser = await User.findOne({googleID:response.data.id}) ;
     
-     // const sqlQueryCHeck = ` select googleID from users where googleID = ?;`;
-     // const resUser = await mysql.query(sqlQueryCHeck,response.data.id);
-     const resUser = await User.find({googleID:response.data.id}) ;
-      const user = resUser;
       console.log(response.data)
-      if(user){
+      if(resUser){
         req.session.isLogined = true;
         req.session.user = response.data;
-
-    
         return res.redirect('/home');
         
          
       }
-     // const sqlInsert = `insert into users (googleID,email,avatar) values (?,?,?);`
-     // await  mysql.query(sqlInsert,[response.data.id,response.data.emails[0].value,response.data.image.url]);
+
       const newUser = new User({googleID:response.data.id,email:response.data.emails[0].value,avatar:response.data.image.url}) ;
       await newUser.save() ;
       session.isLogined = true;
