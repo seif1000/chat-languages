@@ -217,3 +217,15 @@ nav{
   padding: 12px;
   border-radius: 50%;
 }
+.speaksh {
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+
+}
+ .first{
+  font-size: 30px;
+  font-weight: bold ;
+  font-style: italic;
+  color: green ;
+}

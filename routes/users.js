@@ -17,7 +17,7 @@ router.get('/login', isGoBack,function(req, res, next) {
    res.render('users/login', {
      titie:"login",
      auth:false,
-     googlUrl:urlGoogle()
+   
      
     
    })
@@ -54,7 +54,6 @@ router.get('/register' ,isGoBack,(req,res,next)=>{
    res.render('users/rgister',{
      title:'regisetr',
      auth:false,
-     googlUrl:urlGoogle()
    })
 })
 
