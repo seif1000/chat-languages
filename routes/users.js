@@ -5,6 +5,7 @@ const mysql = require('../database/datanase');
 const {urlGoogle} = require('../Gauth/google');
 const {isAuth, isGoBack}  = require('../middelware/helper');
 const { addUser, removeUser, getUser, getUsersInRoom } = require('../utils/users');
+const {User} = require("../database/User") ;
 
 
 router.get('/chat',isAuth,(req, res, next)=>{
@@ -26,11 +27,12 @@ router.get('/login', isGoBack,function(req, res, next) {
 router.post('/login', async (req, res, next)=>{
   const email = req.body.email;
   let password = req.body.password;
-   const userQuery =  ' select * from users where email = ?;';
+   //const userQuery =  ' select * from users where email = ?;';
 
    try {
-      const getUser = await  mysql.query(userQuery,email);
-      const [[user]] = getUser;
+     // const getUser = await  mysql.query(userQuery,email);
+     const getUser = await User.find({email}) ;
+      const user = getUser;
      if (!user) return res.redirect('/users/login');
        
       const doMatch = await  bcrypt.compare(password, user.password);
@@ -61,17 +63,20 @@ router.post('/register',async (req, res,next)=>{
      const email = req.body.email;
      let password = req.body.password;
 
-     const sql = ' select * from users where email = ?;'
+  //   const sql = ' select * from users where email = ?;'
 
   try {
-    const getUser =await mysql.query(sql,email);
-    const user = [[getUser]];
+    //const getUser =await mysql.query(sql,email);
+    const getUser = await  User.find({email}) ;
+    const user = getUser;
     if(user) console.log("user allreday exist");
-    const inserSql = `
-    insert into users (email,password) values(?,?);
-`   
+  //  const inserSql = `
+   // insert into users (email,password) values(?,?);
+//`   
    const hashPassword = await bcrypt.hash(password,12)
-   await mysql.query(inserSql,[email,hashPassword])
+  // await mysql.query(inserSql,[email,hashPassword])
+  const createdUser = new User({email,password:hashPassword} );
+  await User.save() ;
    res.redirect('/users/login')
 
   } catch (error) {

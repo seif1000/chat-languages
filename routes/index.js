@@ -5,6 +5,7 @@ const mysql = require('../database/datanase');
 var router = express.Router();
 const  {isAuth, isGoBack} = require('../middelware/helper');
 const {createConnection} = require('../Gauth/google');
+const {User} = require('../database/User') ;
 
 
 router.get('/',isGoBack, function(req, res, next) {
@@ -35,9 +36,10 @@ router.get('/oauthCallback', async (req, res, next)=>{
       session['tokens'] = tokens;
       const response =await plus.people.get({ userId: 'me', auth: oauth2Client});
     
-      const sqlQueryCHeck = ` select googleID from users where googleID = ?;`;
-      const resUser = await mysql.query(sqlQueryCHeck,response.data.id);
-      const [[user]] = resUser;
+     // const sqlQueryCHeck = ` select googleID from users where googleID = ?;`;
+     // const resUser = await mysql.query(sqlQueryCHeck,response.data.id);
+     const resUser = await User.find({googleID:response.data.id}) ;
+      const user = resUser;
       console.log(response.data)
       if(user){
         req.session.isLogined = true;
@@ -48,8 +50,10 @@ router.get('/oauthCallback', async (req, res, next)=>{
         
          
       }
-      const sqlInsert = `insert into users (googleID,email,avatar) values (?,?,?);`
-      await  mysql.query(sqlInsert,[response.data.id,response.data.emails[0].value,response.data.image.url]);
+     // const sqlInsert = `insert into users (googleID,email,avatar) values (?,?,?);`
+     // await  mysql.query(sqlInsert,[response.data.id,response.data.emails[0].value,response.data.image.url]);
+      const newUser = new User({googleID:response.data.id,email:response.data.emails[0].value,avatar:response.data.image.url}) ;
+      await newUser.save() ;
       session.isLogined = true;
       session.user = response.data ;
       await req.session.save();
