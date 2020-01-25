@@ -9,7 +9,6 @@ const {User} = require("../database/User") ;
 
 
 router.get('/chat',isAuth,(req, res, next)=>{
- 
  res.render('chat',{
    auth:true
  })

@@ -2,7 +2,6 @@
 
 const socket = io()
 
-// Elements
 const $messageForm = document.querySelector('#message-form')
 const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
@@ -11,10 +10,10 @@ const $messages = document.querySelector('#messages')
 
 // Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
+//const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
 
-// Options
 const { lang } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
 const autoscroll = () => {
@@ -40,50 +39,33 @@ const autoscroll = () => {
     }
 }
 
-socket.on('message', (message) => {
+
+socket.on('message', function (message) {
     console.log(message)
     const html = Mustache.render(messageTemplate, {
         username: message.user,
-        message: message.text,
-        avatar:message.avatar,
+        message: message.msg,
         createdAt: moment(message.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend', html)
     autoscroll()
 })
 
-socket.on('roomData', ({ room, users }) => {
-    const html = Mustache.render(sidebarTemplate, {
-        room,
-        users
-    })
-    document.querySelector('#sidebar').innerHTML = html
-    const lists = document.querySelector('#sidebar');
-   // console.log(lists.querySelector('.users'))
-    users = lists.querySelector('.users')
-    if(users){
-        users.forEach(element => {
-            element.addEventListener('click',()=>{
-                console.log(element)
-            })
-       });
-    }
-   
-})
 
+socket.emit('join',{room:lang}) ;
 
 $messageForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
-   // $messageFormButton.setAttribute('disabled', 'disabled')
+    $messageFormButton.setAttribute('disabled', 'disabled')
 
     const message = e.target.elements.message.value
 
     socket.emit('sendMessage', message, (error) => {
-      //  $messageFormButton.removeAttribute('disabled')
+        $messageFormButton.removeAttribute('disabled')
         $messageFormInput.value = ''
         $messageFormInput.focus()
-         
+
         if (error) {
             return console.log(error)
         }
@@ -92,14 +74,15 @@ $messageForm.addEventListener('submit', (e) => {
     })
 })
 
-
-
-socket.emit('join', lang, (error) => {
-    if (error) {
-        alert(error)
-      
-    }
+socket.on('roomData', ({ room, users }) => {
+    const html = Mustache.render(sidebarTemplate, {
+        room,
+        users
+    })
+    document.querySelector('#sidebar').innerHTML = html
 })
+
+
 
 
 
