@@ -13,6 +13,7 @@ const $messages = document.querySelector('#messages')
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
+
 // Options
 const { lang } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
@@ -51,14 +52,25 @@ socket.on('message', (message) => {
     autoscroll()
 })
 
-
 socket.on('roomData', ({ room, users }) => {
     const html = Mustache.render(sidebarTemplate, {
         room,
         users
     })
     document.querySelector('#sidebar').innerHTML = html
+    const lists = document.querySelector('#sidebar');
+   // console.log(lists.querySelector('.users'))
+    users = lists.querySelector('.users')
+    if(users){
+        users.forEach(element => {
+            element.addEventListener('click',()=>{
+                console.log(element)
+            })
+       });
+    }
+   
 })
+
 
 $messageForm.addEventListener('submit', (e) => {
     e.preventDefault()

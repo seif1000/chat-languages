@@ -1,14 +1,10 @@
-const mysql = require('mysql2');
+const mongoose  = require("mongoose") ;
+const {mongo_uri} = require("../config/config") ;
 
-const key = require('../config/config');
-
-const pool = mysql.createPool({
-    host:key.host,
-    user:key.user,
-    database:key.database,
-    password:key.password,
-  
-    
-})
-
-module.exports = pool.promise();
+mongoose.connect(mongo_uri,{
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+}
+) ;

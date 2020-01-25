@@ -5,16 +5,17 @@ var cookieParser = require('cookie-parser');
 const cookie = require('cookie');
 var session =require('express-session');
 var logger = require('morgan');
-var MySQLStore = require('express-mysql-session')(session);
+var MONGOStore = require('connect-mongodb-session')(session);
 const socketIO = require('socket.io');
 const {addUser, getUser, getUsersInRoom, removeUser}  = require('./utils/users');
+const {mongo_uri} = require('./config/config') ;
 const http = require('http');
 
 
-
+require('./database/datanase') ;
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const mysql = require('./database/datanase');
+
 
 
 var app = express();
@@ -28,10 +29,8 @@ const io = socketIO(server);
 
 
 const options = {
-  host:'localhost',
-  user:'root',
-  database:'bootf',
-  password:'benmazouzseifeddine1994'
+ uri:mongo_uri,
+ collection:"mySession"
 }
 
 
@@ -46,7 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use(cookieParser());
-const sessionStore = new MySQLStore(options);
+const sessionStore = new MONGOStore(options) ;
 
 app.use(session({
   secret: 'keyboard cat',
@@ -61,7 +60,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-io.on("connection",function(socket){
+io.on("connection",function(socket ){
       let eamil;
       let avatar
       var tS = cookie.parse(socket.handshake.headers.cookie)['connect.sid'];
@@ -75,7 +74,7 @@ io.on("connection",function(socket){
       });
       socket.on('join',(msg,cb)=>{
         const { error, user } = addUser({ id: socket.id, username:eamil, room:msg,avatar:avatar })
-        console.log(user)
+        
          if(error){
           cb(error)
          } 
@@ -93,6 +92,7 @@ io.on("connection",function(socket){
 
       })
       socket.on('sendMessage',(message)=>{
+        
         const user = getUser(socket.id)
         io.to(user.room).emit('message', {user:user.username,text:message,avatar:avatar})
      
@@ -136,30 +136,6 @@ app.use(function(err, req, res, next) {
 });
 
 const PORT = process.env.PORT || 3000
-mysql
-.getConnection()
-.then(()=>{
- 
-
-  return mysql.query(
-     `create table if not exists users(
-       id int not null auto_increment,
-       googleID varchar(255) , 
-       email varchar(255) ,
-       password varchar(255) ,
-       avatar varchar(255),
-       primary key (id)
-     );`)
-
-  
-  })
-.then(result=>{
-    server.listen(PORT,()=>{
-      console.log('running')
-    })
-  })
-.catch(err=>{
-  console.log(err);
-})
-
-
+server.listen(PORT,()=>{
+  console.log(running)
+}) ;
