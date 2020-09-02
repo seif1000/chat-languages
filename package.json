@@ -19,7 +19,7 @@
     "express": "~4.16.0",
     "express-mysql-session": "^2.1.0",
     "express-session": "^1.15.6",
-    "googleapis": "^37.2.0",
+    "googleapis": "^39.1.0",
     "http-errors": "~1.6.2",
     "mongoose": "^5.8.9",
     "morgan": "~1.9.0",
